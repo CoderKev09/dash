@@ -6,7 +6,7 @@ import ManufacturerForm from './ManufacturerForm';
 import ModelsList from './ModelsList';
 import ModelForm from './ModelForm';
 import AutomobilesList from './AutomobilesList';
-import AutomobileForm from './AppointmentForm';
+import AutomobileForm from './AutomobileForm';
 
 import SalesMain from './SalesMain';
 import SalespeopleList from './SalespeopleList';
