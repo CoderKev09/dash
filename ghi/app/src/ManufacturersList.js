@@ -22,7 +22,7 @@ function ManufacturerList() {
         <div className="row">
             <div>
                 <div>
-                    <Link to="new" className="btn btn_primary btn-sm">
+                    <Link to="manufacturers/new" className="btn btn_primary btn-sm">
                         <button type="button">Add a new manufacturer</button>
                     </Link>
                 </div>
