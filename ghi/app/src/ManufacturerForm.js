@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-function ManufacturersForm() {
+function ManufacturerForm() {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -60,4 +60,4 @@ function ManufacturersForm() {
 
 }
 
-export default ManufacturersForm
+export default ManufacturerForm;

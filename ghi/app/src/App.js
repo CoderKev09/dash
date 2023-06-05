@@ -3,9 +3,28 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import ManufacturersList from './ManufacturersList';
 import ManufacturerForm from './ManufacturerForm';
+import ModelsList from './ModelsList';
+import ModelForm from './ModelForm';
+import AutomobilesList from './AutomobilesList';
+import AutomobileForm from './AppointmentForm';
 
-import ManufacturersList from './ManufacturersList';
-import ManufacturerForm from './ManufacturerForm';
+import SalesMain from './SalesMain';
+import SalespeopleList from './SalespeopleList';
+import SalespersonForm from './SalespersonForm';
+import CustomersList from './CustomersList';
+import CustomerForm from './CustomerForm';
+import SalesList from './SalesList';
+import SaleForm from './SaleForm';
+import SalesHistory from './SalesHistory';
+
+import ServicingMain from './ServicingMain';
+import TechniciansList from './TechniciansList';
+import TechnicianForm from './TechniciansList';
+import AppointmentsList from './AppointmentsList';
+import AppointmentForm from './AppointmentForm';
+import ServiceHistory from './ServiceHistory'
+
+
 
 function App() {
   return (
@@ -18,14 +37,14 @@ function App() {
             <Route path="manufacturers" element={<ManufacturersList />} />
             <Route path="manufacturers/new" element={<ManufacturerForm />} />
 
-            {/* <Route path="models" element={<ModelsList />} />
-            <Route path="models/new" element={<ModelForm />} /> */}
+            <Route path="models" element={<ModelsList />} />
+            <Route path="models/new" element={<ModelForm />} />
 
-            {/* <Route path="automobiles" element={<AutomobilesList />} />
-            <Route path="automobiles/new" element={<AutomobileForm />} /> */}
+            <Route path="automobiles" element={<AutomobilesList />} />
+            <Route path="automobiles/new" element={<AutomobileForm />} />
           </Route>
 
-          {/* <Route path="sales">
+          <Route path="sales">
             <Route index element={<SalesMain />} />
             <Route path="salespeople" element={<SalespeopleList />} />
             <Route path="salespeople/new" element={<SalespersonForm />} />
@@ -48,7 +67,7 @@ function App() {
             <Route path="appointments/new" element={<AppointmentForm />} />
 
             <Route path="history" element={<ServiceHistory />} />
-          </Route> */}
+          </Route>
         </Routes>
       </div>
     </BrowserRouter>
