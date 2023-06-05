@@ -12,22 +12,36 @@ function ManufacturerForm() {
             method:"post",
             body: JSON.stringify(data),
             headers: {
-                "Conent-Type": "application/json",
+                "Content-Type": "application/json",
             }
         }
+
         const response = await fetch (url, fetchConfig);
         if (response.ok) {
             const newManufacturer = await response.json();
-            console.groupCollapsed(newManufacturer);
-            setName('');
-        };
+            console.log(newManufacturer);
+        }
     }
+
 
     const[name, setName] = useState('');
     const handleNameChange = (event) => {
         const value = event.target.value
         setName(value);
     }
+
+    const [manufacturers, setManufacturers] = useState([]);
+    const fetchData = async () => {
+        const url = "http://localhost:8100/api/manufacturers/";
+        const response = await fetch (url)
+
+        if (response.ok) {
+            const data = await response.json()
+            setManufacturers(data.manufacturers)
+        }
+    }
+
+
 
     useEffect(() => {
         fetchData();
@@ -60,4 +74,5 @@ function ManufacturerForm() {
 
 }
 
-export default ManufacturerForm;
+
+export default ManufacturerForm
