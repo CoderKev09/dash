@@ -20,7 +20,8 @@ function ManufacturerForm() {
         if (response.ok) {
             const newManufacturer = await response.json();
             console.log(newManufacturer);
-        }
+            setName('');
+        };
     }
 
 
@@ -57,13 +58,14 @@ function ManufacturerForm() {
                         <input
                         onChange={handleNameChange}
                         value={name}
-                        placeholder="Manufacturer name..."
-                        type="text"
+                        placeholder="Manufacturer name"
                         required
+                        type="text"
                         name="name"
                         id="name"
                         className="form-control"
                         />
+                        <label htmlFor="name">Manufacturer name</label>
                     </div>
                     <button className="btn btn-primary">Create</button>
                 </form>

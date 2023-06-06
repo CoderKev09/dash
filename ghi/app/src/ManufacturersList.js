@@ -38,7 +38,7 @@ function ManufacturerList() {
                     <tbody>
                         {manufacturerList.manufacturers?.map((manufacturer) => {
                             return(
-                                <tr>
+                                <tr key={manufacturer.id}>
                                     <td>{manufacturer.name}</td>
                                 </tr>
                             )
