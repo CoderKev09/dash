@@ -28,7 +28,7 @@ function Nav() {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Sales
+            Sales Department
           </a>
           <ul className="dropdown-menu">
             <li><NavLink className="dropdown-item" to="salespeople">Show Salespeople</NavLink></li>
@@ -45,7 +45,7 @@ function Nav() {
         </li>
         <li className="nav-item dropdown">
           <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Servicing
+            Service Department
           </a>
           <ul className="dropdown-menu">
             <li><NavLink className="dropdown-item" to="technicians">Show Technicians</NavLink></li>

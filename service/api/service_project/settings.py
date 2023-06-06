@@ -30,6 +30,9 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
+    'service_rest.apps.ServiceRestConfig',
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,12 +54,19 @@ ALLOWED_HOSTS = [
     "localhost",
 ]
 
+CRONJOBS = [
+    ("* * * * *", "service_rest.poll"),
+]
+
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8100",
+    "http://localhost:8090",
+    "http://localhost:8080",
 ]
 CORS_ALLOW_CREDENTIALS = True
 
