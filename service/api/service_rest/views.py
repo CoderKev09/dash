@@ -44,8 +44,13 @@ def api_list_technicians(request):
 def api_show_technicians(request, pk):
     if request.method == "DELETE":
         count, _ = Technician.objects.filter(employee_id=pk).delete()
-        return JsonResponse({"deleted": count > 0})
-
+        if count > 0:
+            return JsonResponse({"deleted": count > 0})
+        else:
+            return JsonResponse(
+                {"message": "Invalid Technician id"},
+                status=400,
+            )
 
 
 @require_http_methods(["GET", "POST"])
@@ -80,14 +85,25 @@ def api_list_appointments(request):
 def api_show_appointments(request, pk):
     if request.method == "DELETE":
         count, _ = Appointment.objects.filter(id=pk).delete()
-        return JsonResponse({"deleted": count > 0})
+        if count > 0:
+            return JsonResponse({"deleted": count > 0})
+        else:
+            return JsonResponse(
+                {"message": "Invalid Appointment id"},
+                status=400,
+            )
     elif request.method == "PUT":
         content = json.loads(request.body)
-
-        Appointment.objects.filter(id=pk).update(**content)
-        appointment = Appointment.objects.get(id=pk)
-        return JsonResponse(
-            appointment,
-            encoder=AppointmentEncoder,
-            safe=False,
-        )
+        try:
+            Appointment.objects.filter(id=pk).update(**content)
+            appointment = Appointment.objects.get(id=pk)
+            return JsonResponse(
+                appointment,
+                encoder=AppointmentEncoder,
+                safe=False,
+            )
+        except Appointment.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid appointment id"},
+                status=400,
+            )

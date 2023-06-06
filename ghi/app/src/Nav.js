@@ -31,16 +31,16 @@ function Nav() {
             Sales Department
           </a>
           <ul className="dropdown-menu">
-            <li><NavLink className="dropdown-item" to="salespeople">Show Salespeople</NavLink></li>
-            <li><NavLink className="dropdown-item" to="salespeople/new">Add a Salesperson</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/salespeople">Show Salespeople</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/salespeople/new">Add a Salesperson</NavLink></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><NavLink className="dropdown-item" to="customers">Show Customers</NavLink></li>
-            <li><NavLink className="dropdown-item" to="customers/new">Add a Customer</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/customers">Show Customers</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/customers/new">Add a Customer</NavLink></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><NavLink className="dropdown-item" to="sales">Show Sales</NavLink></li>
-            <li><NavLink className="dropdown-item" to="sales/new">Add a Sale</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/sales">Show Sales</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/sales/new">Add a Sale</NavLink></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><NavLink className="dropdown-item" to="sales-history">Show Sales History</NavLink></li>
+            <li><NavLink className="dropdown-item" to="sales/sales-history">Show Sales History</NavLink></li>
           </ul>
         </li>
         <li className="nav-item dropdown">
@@ -48,13 +48,13 @@ function Nav() {
             Service Department
           </a>
           <ul className="dropdown-menu">
-            <li><NavLink className="dropdown-item" to="technicians">Show Technicians</NavLink></li>
-            <li><NavLink className="dropdown-item" to="technicians/new">Add a Technician</NavLink></li>
+            <li><NavLink className="dropdown-item" to="service/technicians">Show Technicians</NavLink></li>
+            <li><NavLink className="dropdown-item" to="service/technicians/new">Add a Technician</NavLink></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><NavLink className="dropdown-item" to="appointments">Show Service Appointments</NavLink></li>
-            <li><NavLink className="dropdown-item" to="appointments/new">Create a Service Appointment</NavLink></li>
+            <li><NavLink className="dropdown-item" to="service/appointments">Show Service Appointments</NavLink></li>
+            <li><NavLink className="dropdown-item" to="service/appointments/new">Create a Service Appointment</NavLink></li>
             <li><hr className="dropdown-divider" /></li>
-            <li><NavLink className="dropdown-item" to="service-history">Show Service History</NavLink></li>
+            <li><NavLink className="dropdown-item" to="service/service-history">Show Service History</NavLink></li>
           </ul>
         </li>
       </ul>
