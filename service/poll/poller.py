@@ -11,11 +11,12 @@ django.setup()
 
 from service_rest.models import AutomobileVO
 
+
 def poll(repeat=True):
     while True:
-        print('Service poller polling for data')
+        print("Service poller polling for data")
         try:
-            url = "	http://localhost:8100/api/automobiles/"
+            url = "http://inventory-api:8000/api/automobiles/"
             response = requests.get(url)
             content = json.loads(response.content)
             for auto in content["autos"]:
@@ -24,8 +25,8 @@ def poll(repeat=True):
                     defaults={
                         "vin": auto["vin"],
                         "sold": auto["sold"],
-                        "color": auto["color"],
                         "year": auto["year"],
+                        "color": auto["color"],
                         "model": auto["model"],
                     },
                 )
@@ -33,7 +34,7 @@ def poll(repeat=True):
         except Exception as e:
             print(e, file=sys.stderr)
 
-        if (not repeat):
+        if not repeat:
             break
 
         time.sleep(60)
