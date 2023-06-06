@@ -18,6 +18,9 @@ class TechnicianEncoder(ModelEncoder):
 class AppointmentEncoder(ModelEncoder):
     model = Appointment
     properties = ["date_time", "reason", "status", "vin", "customer", "technician"]
+    encoders = {
+        "technician": TechnicianEncoder(),
+    }
 
 
 @require_http_methods(["GET", "POST"])
@@ -43,8 +46,31 @@ def api_show_technicians(request, pk):
 
 
 @require_http_methods(["GET", "POST"])
-def api_list_appointments(request, pk):
-    pass
+def api_list_appointments(request):
+    if request.method == "GET":
+        appointments = Appointment.objects.all()
+        return JsonResponse(
+            {"appointments": appointments},
+            encoder=AppointmentEncoder,
+        )
+    else:
+        content = json.loads(request.body)
+
+        try:
+            technician = Technician.objects.get(employee_id=content["technician"])
+            content["technician"] = technician
+        except Technician.DoesNotExist:
+            return JsonResponse(
+                {"message": "Invalid technician id"},
+                status=400,
+            )
+
+        appointment = Appointment.objects.create(**content)
+        return JsonResponse(
+            appointment,
+            encoder=AppointmentEncoder,
+            safe=False,
+        )
 
 
 @require_http_methods(["GET", "PUT", "DELETE"])

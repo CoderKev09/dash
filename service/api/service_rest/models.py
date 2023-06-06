@@ -6,10 +6,6 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     sold = models.BooleanField(default=False)
 
-    color = models.CharField(max_length=50)
-    year = models.PositiveSmallIntegerField()
-    model = models.CharField(max_length=300)
-
 class Technician(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)

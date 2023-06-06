@@ -16,7 +16,7 @@ def poll(repeat=True):
     while True:
         print("Service poller polling for data")
         try:
-            url = "http://inventory-api:8000/api/automobiles/"
+            url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
             response = requests.get(url)
             content = json.loads(response.content)
             for auto in content["autos"]:
@@ -25,9 +25,6 @@ def poll(repeat=True):
                     defaults={
                         "vin": auto["vin"],
                         "sold": auto["sold"],
-                        "year": auto["year"],
-                        "color": auto["color"],
-                        "model": auto["model"],
                     },
                 )
 
