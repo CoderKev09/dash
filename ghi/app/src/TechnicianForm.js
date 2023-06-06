@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 function createSuccess() {
-	return `<div class="alert alert-success" role="alert">New hat successfully added!</div>`;
+	return `<div class="alert alert-success" role="alert">New technician successfully added!</div>`;
 }
 
 function TechnicianForm() {
@@ -11,21 +11,21 @@ function TechnicianForm() {
             employeeId: '',
         });
 
-        const handleFormDataChange = async (event) => {
-            const name = event.target.name;
-            const value = event.target.value;
+        const handleFormDataChange = async (e) => {
+            const name = e.target.name;
+            const value = e.target.value;
             setFormData({ ...formData, [name]: value });
         };
 
-        const handleCreate = async (event) => {
-            event.preventDefault();
+        const handleCreate = async (e) => {
+            e.preventDefault();
 
             const data = {};
             data.first_name = formData.firstName;
             data.last_name = formData.lastName;
             data.employee_id = formData.employeeId;
 
-            const hatsUrl = 'http://localhost:8080/api/technicians/';
+            const techniciansUrl = "http://localhost:8080/api/technicians/";
             const fetchConfig = {
                 method: 'post',
                 body: JSON.stringify(data),
@@ -34,7 +34,7 @@ function TechnicianForm() {
                 },
             };
 
-            const response = await fetch(hatsUrl, fetchConfig);
+            const response = await fetch(techniciansUrl, fetchConfig);
             if (response.ok) {
                 const success = document.getElementById('submitted');
                 success.innerHTML = createSuccess();
@@ -45,7 +45,6 @@ function TechnicianForm() {
                 });
             }
         };
-
 
         return (
             <div className="row">
@@ -83,7 +82,7 @@ function TechnicianForm() {
                                 <input
                                     placeholder="Employee ID"
                                     required
-                                    type="number"
+                                    type="text"
                                     name="employeeId"
                                     id="employeeId"
                                     className="form-control"
