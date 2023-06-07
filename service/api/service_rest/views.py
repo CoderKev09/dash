@@ -107,3 +107,11 @@ def api_show_appointments(request, pk):
                 {"message": "Invalid appointment id"},
                 status=400,
             )
+
+@require_http_methods(["GET"])
+def api_service_history(request):
+    appointments = Appointment.objects.all()
+    return JsonResponse(
+        {"appointments": appointments},
+        encoder=AppointmentEncoder,
+    )

@@ -31,7 +31,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/">
-            <Route index element={<MainPage />} />
+            <Route element={<MainPage />} />
             <Route path="manufacturers" element={<ManufacturersList />} />
             <Route path="manufacturers/new" element={<ManufacturerForm />} />
 

@@ -16,7 +16,7 @@ class Appointment(models.Model):
     date = models.DateField(default="2023-10-21")
     time = models.TimeField(default="18:00")
     reason = models.TextField()
-    status = models.CharField(max_length=100, default="Pending")
+    status = models.CharField(max_length=100, default="Created")
     vin = models.CharField(max_length=17)
     customer = models.CharField(max_length=100)
     technician = models.ForeignKey(

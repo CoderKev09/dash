@@ -27,7 +27,6 @@ function AutomobileForm() {
 		const name = event.target.name;
 		const value = event.target.value;
 		setFormData({ ...formData, [name]: value });
-        console.log(formData);
 	};
 
 	const handleSubmit = async (event) => {
