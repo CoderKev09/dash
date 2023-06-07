@@ -56,7 +56,7 @@ def api_show_technicians(request, pk):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
-        appointments = Appointment.objects.all()
+        appointments = Appointment.objects.exclude(status="Canceled").exclude(status="Finished")
         return JsonResponse(
             {"appointments": appointments},
             encoder=AppointmentEncoder,
