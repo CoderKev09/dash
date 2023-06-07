@@ -92,7 +92,7 @@ function TechnicianForm() {
                                 <label htmlFor="name">Employee ID</label>
                             </div>
                             <div id="submitted"></div>
-                            <button className="btn btn-primary">Create</button>
+                            <button className="btn btn-success">Create</button>
                         </form>
                     </div>
                 </div>

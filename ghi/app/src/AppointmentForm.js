@@ -36,8 +36,7 @@ function AppointmentForm() {
 		const data = {};
         data.vin = formData.vin;
         data.customer = formData.customer;
-        data.date = formData.date;
-        data.time = formData.time;
+        data.date_time = `${formData.date}T${formData.time}`;
         data.technician = formData.technician;
         data.reason = formData.reason;
 
@@ -159,7 +158,7 @@ function AppointmentForm() {
 							<label htmlFor="name">Reason</label>
 						</div>
 						<div id="submitted"></div>
-						<button className="btn btn-primary">Create</button>
+						<button className="btn btn-success">Create</button>
 					</form>
 				</div>
 			</div>

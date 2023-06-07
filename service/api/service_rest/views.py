@@ -3,24 +3,8 @@ from django.views.decorators.http import require_http_methods
 import json
 from common.json import ModelEncoder
 from .models import Technician, Appointment, AutomobileVO
+from common.encoders import AutomobileVOEncoder, TechnicianEncoder, AppointmentEncoder
 
-
-class AutomobileVOEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = ["vin", "sold", "color", "year", "model"]
-
-
-class TechnicianEncoder(ModelEncoder):
-    model = Technician
-    properties = ["first_name", "last_name", "employee_id", "id"]
-
-
-class AppointmentEncoder(ModelEncoder):
-    model = Appointment
-    properties = ["id", "date", "time", "reason", "status", "vin", "customer", "technician"]
-    encoders = {
-        "technician": TechnicianEncoder(),
-    }
 
 
 @require_http_methods(["GET", "POST"])
@@ -51,6 +35,12 @@ def api_show_technicians(request, pk):
                 {"message": "Invalid Technician id"},
                 status=400,
             )
+
+@require_http_methods({"GET"})
+def api_list_automobiles(request):
+    if request.method == "GET":
+        automobiles = AutomobileVO.objects.all()
+        return JsonResponse({"automobiles": automobiles}, encoder=AutomobileVOEncoder)
 
 
 @require_http_methods(["GET", "POST"])
@@ -93,8 +83,8 @@ def api_show_appointments(request, pk):
                 status=400,
             )
     elif request.method == "PUT":
-        content = json.loads(request.body)
         try:
+            content = json.loads(request.body)
             Appointment.objects.filter(id=pk).update(**content)
             appointment = Appointment.objects.get(id=pk)
             return JsonResponse(

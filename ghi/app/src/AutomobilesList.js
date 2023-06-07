@@ -15,8 +15,8 @@ function AutomobilesList() {
 		}
 	};
 
-	const isAvailable = (sold) => {
-		if (sold == true) {
+	const isAvailable = (status) => {
+		if (status == true) {
 			return (
 				<div className="alert alert-danger m-0 p-0" role="alert">
 					Sold
@@ -37,7 +37,7 @@ function AutomobilesList() {
 
 	return (
 		<div className="row">
-			<div className="offset-1 col-10">
+			<div className="col-12">
 				<div className="shadow p-3 m-4">
 					<h1>Automobile Inventory</h1>
 					<div className="row gap-5 m-3">
@@ -62,7 +62,7 @@ function AutomobilesList() {
 						<tbody>
 							{automobileList.autos?.map((auto) => {
 								return (
-									<tr className="align-middle" key={auto.id} value="auto.id">
+									<tr className="align-middle" key={auto.id}>
 										<td>
 											<img className="carpic" src={auto.model.picture_url} />
 										</td>

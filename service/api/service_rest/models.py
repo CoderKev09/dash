@@ -13,8 +13,7 @@ class Technician(models.Model):
 
 
 class Appointment(models.Model):
-    date = models.DateField(default="2023-10-21")
-    time = models.TimeField(default="18:00")
+    date_time = models.DateTimeField(default="2023-01-01T00:00:00.000Z")
     reason = models.TextField()
     status = models.CharField(max_length=100, default="Created")
     vin = models.CharField(max_length=17)

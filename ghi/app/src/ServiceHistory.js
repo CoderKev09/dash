@@ -11,7 +11,7 @@ function AppointmentsList() {
 		list: appointmentsList,
 	});
 
-	const fetchData = async () => {
+	const fetchServiceHistory = async () => {
 		const url = 'http://localhost:8080/api/service-history/';
 		const response = await fetch(url);
 		if (response.ok) {
@@ -21,70 +21,96 @@ function AppointmentsList() {
 		}
 	};
 
-	const fetchInventory = async () => {
-		const url = 'http://localhost:8100/api/automobiles/';
+	const fetchAutomobileVO = async () => {
+		const url = 'http://localhost:8080/api/automobiles/';
 		const response = await fetch(url);
 		if (response.ok) {
 			const data = await response.json();
 			let vinArray = [];
-			for (const d of data.autos) {
-				if (d.sold == true) {
-					vinArray.push(d.vin);
+			for (const automobile of data.automobiles) {
+				if (automobile.sold == true) {
+					vinArray.push(automobile.vin);
 				}
 			}
 			setVinList(vinArray);
 		}
 	};
 
-	const vipStatus = (v) => {
-		if (vinList.includes(v)) {
-			return 'Yes';
-		} else {
-			return 'No';
-		}
+	const vipStatus = (vin) => (vinList.includes(vin) ? 'Yes' : 'No');
+
+	const getDate = (datetime) => {
+		const date = new Date(datetime);
+		const year = date.getFullYear();
+		const month = date.getMonth();
+		const day = date.getDay();
+		return `${month}/${day}/${year}`;
 	};
 
-	const handleSubmit = (e) => {
-        e.preventDefault();
+	const getTime = (datetime) => {
+		const date = new Date(datetime);
+		let hour = date.getHours();
+		const minute = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+		let ampm = 'AM';
+		if (hour > 12) {
+			hour -= 12;
+			ampm = 'PM';
+		}
+		return `${hour}:${minute} ${ampm}`;
+	};
+
+	const handleSearch = (e) => {
+		e.preventDefault();
 		const results = appointmentsList.filter((appointment) => {
-            return (appointment.vin.toLowerCase()).includes(query.toLowerCase());
+			return appointment.vin.toLowerCase().includes(query.toLowerCase());
 		});
 		setState({
 			query: query,
 			list: results,
 		});
-        setQuery('')
+		setQuery('');
 	};
 
-    const handleChange = (e) => {
+	const handleChange = (e) => {
 		setQuery(e.target.value);
-		// const results = appointmentsList.filter((appointment) => {
-		// 	if (e.target.value === '') return appointmentsList;
-		// 	return appointment.vin
-		// 		.toLowerCase()
-		// 		.includes(e.target.value.toLowerCase());
-		// });
-		// setState({
-		// 	query: e.target.value,
-		// 	list: results,
-		// });
+	};
+
+	const statusLabel = (status) => {
+		if (status == 'Canceled') {
+			return (
+				<div className="alert alert-danger m-0 p-0" role="alert">
+					{status}
+				</div>
+			);
+		} else if (status == 'Finished') {
+			return (
+				<div className="alert alert-success m-0 p-0" role="alert">
+					{status}
+				</div>
+			);
+		} else {
+			return (
+				<div className="alert alert-warning m-0 p-0" role="alert">
+					{status}
+				</div>
+			);
+		}
 	};
 
 	useEffect(() => {
-		fetchData();
-		fetchInventory();
+		fetchServiceHistory();
+		fetchAutomobileVO();
 	}, []);
 
 	return (
 		<div className="row">
-			<div className="offset-1 col-10">
+			<div className="col-12">
 				<div className="shadow p-3 m-4">
 					<h1>Service History</h1>
 					<div className="row gap-5 m-3">
-						<form className="form-inline input-group" onSubmit={handleSubmit}>
+						<form className="form-inline input-group" onSubmit={handleSearch}>
 							<div className="form-floating col-3">
 								<input
-									placeholder="Search by VIN"
+									placeholder="Search by VIN..."
 									type="search"
 									name="search"
 									id="search"
@@ -93,12 +119,12 @@ function AppointmentsList() {
 									value={query}
 								/>
 								<label htmlFor="name" className="col-form-label">
-									Search by VIN
+									Search by VIN...
 								</label>
 							</div>
 							<div className="input-group-append">
 								&nbsp;&nbsp;
-								<button className="btn btn-success align-middle">Search</button>
+								<button className="btn btn-success">Search</button>
 							</div>
 						</form>
 					</div>
@@ -117,30 +143,26 @@ function AppointmentsList() {
 							</tr>
 						</thead>
 						<tbody>
-                        {/* state.list.length == 0
-								? 'Your search did not return any results'
-								:  */}
 							{state.list?.map((appointment) => {
-										return (
-											<tr
-												className="align-middle"
-												key={appointment.id}
-												value="appointment.id"
-											>
-												<td>{appointment.vin}</td>
-												<td>{vipStatus(appointment.vin)}</td>
-												<td>{appointment.customer}</td>
-												<td>{appointment.date}</td>
-												<td>{appointment.time}</td>
-												<td>
-													{appointment.technician.first_name}{' '}
-													{appointment.technician.last_name}
-												</td>
-												<td>{appointment.reason}</td>
-												<td>{appointment.status}</td>
-											</tr>
-										);
-								  })}
+								return (
+									<tr
+										className="align-middle"
+										key={appointment.id}
+										value="appointment.id"
+									>
+										<td>{appointment.vin}</td>
+										<td>{vipStatus(appointment.vin)}</td>
+										<td>{appointment.customer}</td>
+										<td>{getDate(appointment.date_time)}</td>
+										<td>{getTime(appointment.date_time)}</td>
+										<td>
+											{`${appointment.technician.first_name} ${appointment.technician.last_name}`}
+										</td>
+										<td>{appointment.reason}</td>
+										<td>{statusLabel(appointment.status)}</td>
+									</tr>
+								);
+							})}
 						</tbody>
 					</table>
 				</div>
