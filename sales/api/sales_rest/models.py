@@ -13,27 +13,28 @@ class Salesperson(models.Model):
     employee_id = models.CharField(max_length=20)
 
 
+
 class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
-    phone_number = models.PositiveIntegerField()
+    phone_number = models.PositiveBigIntegerField()
 
 
 class Sale(models.Model):
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.CharField(max_length=20)
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="automobile",
+        related_name="sales",
         on_delete=models.CASCADE,
     )
     salesperson = models.ForeignKey(
         Salesperson,
-        related_name="salesperson",
+        related_name="sales",
         on_delete=models.CASCADE,
     )
     customer = models.ForeignKey(
         Customer,
-        related_name="customer",
+        related_name="sales",
         on_delete=models.CASCADE,
     )
