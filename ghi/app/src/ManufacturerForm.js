@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 
 function ManufacturerForm() {
     const handleSubmit = async (event) => {
@@ -18,8 +18,6 @@ function ManufacturerForm() {
 
         const response = await fetch (url, fetchConfig);
         if (response.ok) {
-            const newManufacturer = await response.json();
-            console.log(newManufacturer);
             setName('');
         };
     }
@@ -31,22 +29,6 @@ function ManufacturerForm() {
         setName(value);
     }
 
-    const [manufacturers, setManufacturers] = useState([]);
-    const fetchData = async () => {
-        const url = "http://localhost:8100/api/manufacturers/";
-        const response = await fetch (url)
-
-        if (response.ok) {
-            const data = await response.json()
-            setManufacturers(data.manufacturers)
-        }
-    }
-
-
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     return(
         <div className="row">
