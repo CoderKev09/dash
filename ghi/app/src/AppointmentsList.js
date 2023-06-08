@@ -6,7 +6,7 @@ function AppointmentsList() {
 	const [appointmentsList, setAppointmentsList] = useState([]);
 	const [vinList, setVinList] = useState([]);
 
-	const fetchAppointments = async () => {
+	const fetchAppointmentData = async () => {
 		const url = 'http://localhost:8080/api/appointments/';
 		const response = await fetch(url);
 		if (response.ok) {
@@ -53,7 +53,7 @@ function AppointmentsList() {
 	};
 
 	const statusCancel = async (id) => {
-		const url = `http://localhost:8080/api/appointments/${id}/cancel/`;
+		const url = `http://localhost:8080/api/appointments/${id}/cancel`;
 		const fetchConfig = {
 			method: 'put',
 			body: JSON.stringify({ status: 'Canceled' }),
@@ -61,12 +61,12 @@ function AppointmentsList() {
 		};
 		const response = await fetch(url, fetchConfig);
 		if (response.ok) {
-			fetchAppointments();
+			fetchAppointmentData();
 		}
 	};
 
 	const statusFinish = async (id) => {
-		const url = `http://localhost:8080/api/appointments/${id}/finish/`;
+		const url = `http://localhost:8080/api/appointments/${id}/finish`;
 		const fetchConfig = {
 			method: 'put',
 			body: JSON.stringify({ status: 'Finished' }),
@@ -74,12 +74,12 @@ function AppointmentsList() {
 		};
 		const response = await fetch(url, fetchConfig);
 		if (response.ok) {
-			fetchAppointments();
+			fetchAppointmentData();
 		}
 	};
 
 	useEffect(() => {
-		fetchAppointments();
+		fetchAppointmentData();
 		fetchAutomobileVO();
 	}, []);
 

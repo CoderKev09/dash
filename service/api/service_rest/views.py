@@ -1,10 +1,13 @@
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 import json
-from common.json import ModelEncoder
-from .models import Technician, Appointment, AutomobileVO
-from common.encoders import AutomobileVOEncoder, TechnicianEncoder, AppointmentEncoder
 
+from .encoders import (
+    AutomobileVOEncoder,
+    TechnicianEncoder,
+    AppointmentEncoder,
+)
+from .models import Technician, Appointment, AutomobileVO
 
 
 @require_http_methods(["GET", "POST"])
@@ -13,15 +16,15 @@ def api_list_technicians(request):
         technicians = Technician.objects.all()
         return JsonResponse({"technicians": technicians}, encoder=TechnicianEncoder)
     else:
-        content = json.loads(request.body)
         try:
+            content = json.loads(request.body)
             technician = Technician.objects.create(**content)
+            return JsonResponse(technician, encoder=TechnicianEncoder, safe=False)
         except Technician.DoesNotExist:
             return JsonResponse(
                 {"message": "Invalid Technician Input"},
                 status=400,
             )
-        return JsonResponse(technician, encoder=TechnicianEncoder, safe=False)
 
 
 @require_http_methods(["DELETE"])
@@ -36,6 +39,7 @@ def api_show_technicians(request, pk):
                 status=400,
             )
 
+
 @require_http_methods({"GET"})
 def api_list_automobiles(request):
     if request.method == "GET":
@@ -46,15 +50,16 @@ def api_list_automobiles(request):
 @require_http_methods(["GET", "POST"])
 def api_list_appointments(request):
     if request.method == "GET":
-        appointments = Appointment.objects.exclude(status="Canceled").exclude(status="Finished")
+        appointments = Appointment.objects.exclude(status="Canceled").exclude(
+            status="Finished"
+        )
         return JsonResponse(
             {"appointments": appointments},
             encoder=AppointmentEncoder,
         )
     else:
-        content = json.loads(request.body)
-
         try:
+            content = json.loads(request.body)
             technician = Technician.objects.get(employee_id=content["technician"])
             content["technician"] = technician
         except Technician.DoesNotExist:
@@ -62,7 +67,6 @@ def api_list_appointments(request):
                 {"message": "Invalid technician id"},
                 status=400,
             )
-
         appointment = Appointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -79,10 +83,10 @@ def api_show_appointments(request, pk):
             return JsonResponse({"deleted": count > 0})
         else:
             return JsonResponse(
-                {"message": "Invalid Appointment id"},
+                {"message": "Invalid appointment id"},
                 status=400,
             )
-    elif request.method == "PUT":
+    else:
         try:
             content = json.loads(request.body)
             Appointment.objects.filter(id=pk).update(**content)
@@ -97,6 +101,7 @@ def api_show_appointments(request, pk):
                 {"message": "Invalid appointment id"},
                 status=400,
             )
+
 
 @require_http_methods(["GET"])
 def api_service_history(request):

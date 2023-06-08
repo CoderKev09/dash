@@ -9,7 +9,7 @@ function AutomobileForm() {
 		model: '',
 	});
 
-	const fetchData = async () => {
+	const fetchModelData = async () => {
 		const url = 'http://localhost:8100/api/models/';
 		const response = await fetch(url);
 
@@ -19,7 +19,7 @@ function AutomobileForm() {
 		}
 	};
 
-	const handleChange = async (event) => {
+	const handleFormDataChange = async (event) => {
 		const name = event.target.name;
 		const value = event.target.value;
 		setFormData({ ...formData, [name]: value });
@@ -43,14 +43,14 @@ function AutomobileForm() {
 			},
 		};
 
-		const createSuccess = () => {
+		const submitSuccessful = () => {
 			return `<div class="alert alert-success" role="alert">New automobile successfully added!</div>`;
 		};
 
 		const response = await fetch(hatsUrl, fetchConfig);
 		if (response.ok) {
 			const success = document.getElementById('submitted');
-			success.innerHTML = createSuccess();
+			success.innerHTML = submitSuccessful();
 			setFormData({
 				color: '',
 				year: '',
@@ -61,7 +61,7 @@ function AutomobileForm() {
 	};
 
 	useEffect(() => {
-		fetchData();
+		fetchModelData();
 	}, []);
 
 	return (
@@ -78,7 +78,7 @@ function AutomobileForm() {
 								name="color"
 								id="color"
 								className="form-control"
-								onChange={handleChange}
+								onChange={handleFormDataChange}
 								value={formData.color}
 							/>
 							<label htmlFor="name">Color</label>
@@ -91,7 +91,7 @@ function AutomobileForm() {
 								name="year"
 								id="year"
 								className="form-control"
-								onChange={handleChange}
+								onChange={handleFormDataChange}
 								value={formData.year}
 							/>
 							<label htmlFor="name">Year</label>
@@ -104,7 +104,7 @@ function AutomobileForm() {
 								name="vin"
 								id="vin"
 								className="form-control"
-								onChange={handleChange}
+								onChange={handleFormDataChange}
 								value={formData.vin}
 							/>
 							<label htmlFor="name">VIN</label>
@@ -115,7 +115,7 @@ function AutomobileForm() {
 								id="model"
 								name="model"
 								className="form-select"
-								onChange={handleChange}
+								onChange={handleFormDataChange}
 							>
 								<option value=''>Select the model</option>
 								{models.map((model) => {
@@ -128,7 +128,7 @@ function AutomobileForm() {
 							</select>
 						</div>
 						<div id="submitted"></div>
-						<button className="btn btn-success">Add</button>
+						<button className="btn btn-success">Add Automobile</button>
 					</form>
 				</div>
 			</div>

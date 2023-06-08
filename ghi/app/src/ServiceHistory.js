@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import './index.css';
 
 function AppointmentsList() {
@@ -70,7 +69,7 @@ function AppointmentsList() {
 		setQuery('');
 	};
 
-	const handleChange = (e) => {
+	const handleFormDataChange = (e) => {
 		setQuery(e.target.value);
 	};
 
@@ -115,7 +114,7 @@ function AppointmentsList() {
 									name="search"
 									id="search"
 									className="form-control"
-									onChange={handleChange}
+									onChange={handleFormDataChange}
 									value={query}
 								/>
 								<label htmlFor="name" className="col-form-label">

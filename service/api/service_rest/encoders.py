@@ -1,5 +1,5 @@
 from common.json import ModelEncoder
-from service_rest.models import Technician, Appointment, AutomobileVO
+from .models import Technician, Appointment, AutomobileVO
 
 
 class AutomobileVOEncoder(ModelEncoder):

@@ -5,17 +5,16 @@ import './index.css';
 function AutomobilesList() {
 	const [automobileList, setAutomobileList] = useState([]);
 
-	const fetchData = async () => {
+	const fetchAutomobileData = async () => {
 		const url = 'http://localhost:8100/api/automobiles/';
 		const response = await fetch(url);
-
 		if (response.ok) {
 			const data = await response.json();
 			setAutomobileList(data);
 		}
 	};
 
-	const isAvailable = (status) => {
+	const isSold = (status) => {
 		if (status == true) {
 			return (
 				<div className="alert alert-danger m-0 p-0" role="alert">
@@ -32,7 +31,7 @@ function AutomobilesList() {
 	};
 
 	useEffect(() => {
-		fetchData();
+		fetchAutomobileData();
 	}, []);
 
 	return (
@@ -56,7 +55,6 @@ function AutomobilesList() {
 								<th>Color</th>
 								<th>VIN</th>
 								<th>Status</th>
-								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -71,7 +69,7 @@ function AutomobilesList() {
 										<td>{auto.model.name}</td>
 										<td>{auto.color}</td>
 										<td>{auto.vin}</td>
-										<td>{isAvailable(auto.sold)}</td>
+										<td>{isSold(auto.sold)}</td>
 									</tr>
 								);
 							})}
