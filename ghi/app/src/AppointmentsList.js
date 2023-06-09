@@ -22,7 +22,7 @@ function AppointmentsList() {
 			const data = await response.json();
 			let soldVins = [];
 			for (const automobile of data.automobiles) {
-				if (automobile.sold == true) {
+				if (automobile.sold === true) {
 					soldVins.push(automobile.vin);
 				}
 			}
@@ -67,10 +67,13 @@ function AppointmentsList() {
 
 	const statusFinish = async (id) => {
 		const url = `http://localhost:8080/api/appointments/${id}/finish`;
+		const data = { status: 'Finished' };
 		const fetchConfig = {
 			method: 'put',
-			body: JSON.stringify({ status: 'Finished' }),
-			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify(data),
+			headers: {
+				'Content-Type': 'application/json',
+			},
 		};
 		const response = await fetch(url, fetchConfig);
 		if (response.ok) {
