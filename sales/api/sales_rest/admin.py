@@ -6,9 +6,11 @@ from .models import Salesperson, Sale, Customer
 class SalespersonAdmin(admin.ModelAdmin):
     pass
 
+
 @admin.register(Sale)
 class Sale(admin.ModelAdmin):
     pass
+
 
 @admin.register(Customer)
 class Customer(admin.ModelAdmin):

@@ -49,5 +49,28 @@ In addition to the service microservice, the frontend portion of the Inventory m
 
 ## Sales microservice
 
-Explain your models and integration with the inventory
-microservice, here.
+Backend: Python and Django
+The models of the Sales microservice:
+1. The AutomobileVO model collects information about an automobile from the Inventory API; the Vehicle Identification number (VIN), a Booliean field to indicate wether the vehicle has been sold or not and the href. To achieve this a poller was used to pull information from the Inventory API.
+2. The Salesperson model tracks the persons first name, last name and employee id
+3. The Customer model tracks a potential customers first name, last name, address, and phone number.
+4. The Sale model allows to create a record and keep track of any sales made. It has a field for the price of an automobile with three foreign keys. The first one is the for the automobile which uses the AutomobileVO, the second one is the saleperson which used the Salesperson model and, the third one is for the customer which uses the Customer model.
+
+The functions created in Views to handle HTTP requests:
+1. api_list_salesperson - To GET a list of all salespeople or create a new salesperson.
+2. api_show_salesperson - To DELETE a specific salesperson by the id.
+3. api_list_customer - To GET a list of all customers or create a new customer.
+4. api_show_customer - To DELETE a specific salesperson by the id.
+5. api_list_sales - To GET a list of all sales or create a new sale.
+6. api_show_sales - To DELETE a specific sale by the id.
+
+Frontend: React
+React was used to create a list and form for users to interact with each of the following:
+1. Salesperson: Create a salesperson by inputting their full name and an employee ID and view list of the salespeople that have been added.
+2. Customer: Create a customer by inputting their full name, address and phone number and view a list of all the salespeople that have been added.
+3. Sale: Create a sale by selecting, from a 3 different dropdown menus, the VIN of any available automobiles, the full name of the salesperson who made the sale, and the full name of the customer who made the purchase. There is also an input for the price of the automobile.
+4. Speacial Feature: Once a sale form is submitted the automobile.sold is updated from false to true. This is done in the SaleForm.js file by getting the autombile by its id and using a PUT to update it. Furthermore, a sold autmobile will no longer show up in the available automobiles dropdown menu when creating a sale. This is also a achieved in the SalesForm.js file by using filter() to filter out sold autos and only returning the ones where sold is equal to false.
+5. Sales History: A salesperson history list was created to display all of the sales that were completed by a specific Salesperson. A dropdown was created to be able to choose from the list of Salespeople that have been added. Filter() was used in order to return an array based on a the name of a specific salesperson. A map function is then used to iterate through that array and display the details of each sale completed by that person.
+The front end potion of the Inventory API was split between my partner and I. He handled the Automobile form and list, App.js and Nav.js while I worked on the lists and forms for the manufacturers and vehicle models.
+1. Manufacturer: Create a car manufacturer by inputting its name and view a list of manufactures that have been added.
+2. Vehicle Model: Create a Vehicle model by inputting its name, adding a picture url, and choosing a manufacturer from a dropdown menu of previously added manufacturers.
