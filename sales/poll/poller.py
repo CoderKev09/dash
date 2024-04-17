@@ -17,7 +17,7 @@ def poll(repeat=True):
     while True:
         print('Sales poller polling for data')
         try:
-            url = "http://project-beta-inventory-api-1:8000/api/automobiles"
+            url = "http://getaway-cars-inventory-api-1:8000/api/automobiles"
             response = requests.get(url)
             content = json.loads(response.content)
             for automobile in content["autos"]:

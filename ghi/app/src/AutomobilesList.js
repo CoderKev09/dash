@@ -15,7 +15,7 @@ function AutomobilesList() {
 	};
 
 	const isSold = (status) => {
-		if (status == true) {
+		if (status === true) {
 			return (
 				<div className="alert alert-danger m-0 p-0" role="alert">
 					Sold
@@ -45,7 +45,7 @@ function AutomobilesList() {
 						</Link>
 					</div>
 					<br />
-					<table className="table table-hover text-center">
+					<table className="table table-hover text-center table-dark">
 						<thead>
 							<tr>
 								<th>Picture</th>
@@ -62,7 +62,7 @@ function AutomobilesList() {
 								return (
 									<tr className="align-middle" key={auto.id}>
 										<td>
-											<img className="carpic" src={auto.model.picture_url} />
+											<img className="carpic" src={auto.model.picture_url} alt='' />
 										</td>
 										<td>{auto.year}</td>
 										<td>{auto.model.manufacturer.name}</td>

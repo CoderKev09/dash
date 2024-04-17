@@ -30,7 +30,7 @@ function CustomersList() {
           </button>
         </Link>
       </div>
-      <table className="table table-striped shadow p-1 m-3">
+      <table className="table table-dark table-hover shadow p-1 m-3">
         <thead className="table-success">
           <tr>
             <th>First Name</th>

@@ -62,7 +62,7 @@ function ModelForm() {
   return (
     <div className="row">
       <div className="offset-3 col-6">
-        <div className="shadow p-4 mt-4">
+        <div className="shadow p-4 mt-4 text-dark">
           <h1>Add a vehicle model</h1>
           <form onSubmit={handleSubmit} id="create-model-form">
             <div className="form-floating mb-3">
@@ -76,7 +76,9 @@ function ModelForm() {
                 id="name"
                 className="form-control"
               />
-              <label htmlFor="name">Model name</label>
+              <label className="text-dark" htmlFor="name">
+                Model name
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -89,7 +91,9 @@ function ModelForm() {
                 id="picture_url"
                 className="form-control"
               />
-              <label htmlFor="picture_url">Picture URL</label>
+              <label className="text-dark" htmlFor="picture_url">
+                Picture URL
+              </label>
             </div>
             <div className="mb-3">
               <select

@@ -179,7 +179,9 @@ function SaleForm() {
                 id="price"
                 className="form-control"
               />
-              <label htmlFor="price">Price</label>
+              <label className="text-dark" htmlFor="price">
+                Price
+              </label>
             </div>
             <button className="btn btn-success">Create</button>
           </form>

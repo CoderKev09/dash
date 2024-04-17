@@ -69,7 +69,9 @@ function CustomerForm() {
                 id="first_name"
                 className="form-control"
               />
-              <label htmlFor="first_name">First name</label>
+              <label className="text-dark" htmlFor="first_name">
+                First name
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -82,7 +84,9 @@ function CustomerForm() {
                 id="Last_name"
                 className="form-control"
               />
-              <label htmlFor="Last_name">Last name</label>
+              <label className="text-dark" htmlFor="Last_name">
+                Last name
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -95,7 +99,9 @@ function CustomerForm() {
                 id="address"
                 className="form-control"
               />
-              <label htmlFor="address">Address</label>
+              <label className="text-dark" htmlFor="address">
+                Address
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -108,7 +114,9 @@ function CustomerForm() {
                 id="phone_number"
                 className="form-control"
               />
-              <label htmlFor="phone_number">Phone Number</label>
+              <label className="text-dark" htmlFor="phone_number">
+                Phone Number
+              </label>
             </div>
             <button className="btn btn-success">Create</button>
           </form>

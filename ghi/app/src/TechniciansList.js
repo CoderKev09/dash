@@ -29,7 +29,7 @@ function TechniciansList() {
 						</Link>
 					</div>
 					<br />
-					<table className="table table-hover text-center">
+					<table className="table table-hover table-dark text-center">
 						<thead>
 							<tr>
 								<th>Employee ID</th>

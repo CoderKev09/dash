@@ -61,7 +61,9 @@ function SalespersonForm() {
                 id="employee_id"
                 className="form-control"
               />
-              <label htmlFor="employee_id">Employee ID</label>
+              <label className="text-dark" htmlFor="employee_id">
+                Employee ID
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -74,7 +76,9 @@ function SalespersonForm() {
                 id="first_name"
                 className="form-control"
               />
-              <label htmlFor="first_name">First name</label>
+              <label className="text-dark" htmlFor="first_name">
+                First name
+              </label>
             </div>
             <div className="form-floating mb-3">
               <input
@@ -87,7 +91,9 @@ function SalespersonForm() {
                 id="Last_name"
                 className="form-control"
               />
-              <label htmlFor="Last_name">Last name</label>
+              <label className="text-dark" htmlFor="Last_name">
+                Last name
+              </label>
             </div>
             <button className="btn btn-success">Create</button>
           </form>

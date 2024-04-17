@@ -30,7 +30,7 @@ function SalesList() {
           </button>
         </Link>
       </div>
-      <table className="table table-striped shadow p-1 m-3">
+      <table className="table table-hover table-dark shadow p-1 m-3">
         <thead className="table-success">
           <tr>
             <th>Salesperson Employee ID</th>

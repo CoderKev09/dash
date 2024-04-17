@@ -59,7 +59,7 @@ function SalesHistory() {
           })}
         </select>
       </div>
-      <table className="table table-striped shadow p-1 m-2">
+      <table className="table table-dark table-hover shadow p-1 m-2">
         <thead className="table-success">
           <tr>
             <th>Salesperson</th>

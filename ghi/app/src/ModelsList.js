@@ -30,7 +30,7 @@ function ModelsList() {
           </button>
         </Link>
       </div>
-      <table className="table shadow p-1 m-3 table-striped">
+      <table className="table shadow p-1 m-3 table-dark table-hover">
         <thead className="table-success">
           <tr>
             <th>Name</th>
@@ -45,7 +45,7 @@ function ModelsList() {
                 <td>{model.name}</td>
                 <td>{model.manufacturer.name}</td>
                 <td>
-                  <img className="carpic" src={model.picture_url} />
+                  <img className="carpic" src={model.picture_url} alt=''/>
                 </td>
               </tr>
             );

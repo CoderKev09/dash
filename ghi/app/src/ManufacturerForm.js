@@ -45,7 +45,9 @@ function ManufacturerForm() {
                 id="name"
                 className="form-control"
               />
-              <label htmlFor="name">Manufacturer name</label>
+              <label className="text-dark" htmlFor="name">
+                Manufacturer name
+              </label>
             </div>
             <button className="btn btn-success">Create</button>
           </form>
