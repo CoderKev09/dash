@@ -20,36 +20,40 @@ function SalespeopleList() {
 
   return (
     <div className="row">
-      <div>
-        <h1 className="display-3">Salespeople</h1>
-      </div>
-      <div>
-        <Link to="new" className="btn btn_primary btn-sm">
-          <button type="button" className="btn btn-success btn-sm">
-            Add a salesperson
-          </button>
-        </Link>
-      </div>
-      <table className="table table-dark table-hover shadow p-1 m-3">
-        <thead className="table-success">
-          <tr>
-            <th>Employee ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {salespeopleList.salespeople?.map((salesperson) => {
-            return (
-              <tr key={salesperson.employee_id}>
-                <td>{salesperson.employee_id}</td>
-                <td>{salesperson.first_name}</td>
-                <td>{salesperson.last_name}</td>
+      <div className="offset-1 col-10">
+        <div className="shadow p-3 m-4">
+          <h1 className="m-3">Salespeople</h1>
+          <div className="row gap-5 m-3">
+            <Link
+              to="new"
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn btn-sm col-3 text-light"
+            >
+              Add a salesperson
+            </Link>
+          </div>
+          <table className="table table-dark table-hover shadow">
+            <thead>
+              <tr>
+                <th>Employee ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {salespeopleList.salespeople?.map((salesperson) => {
+                return (
+                  <tr key={salesperson.employee_id}>
+                    <td>{salesperson.employee_id}</td>
+                    <td>{salesperson.first_name}</td>
+                    <td>{salesperson.last_name}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

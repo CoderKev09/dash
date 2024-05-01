@@ -104,7 +104,7 @@ function AppointmentsList() {
     <div className="row">
       <div className="col-12">
         <div className="shadow p-3 m-4">
-          <h1>Service History</h1>
+          <h1 className="m-3">Service History</h1>
           <div className="row gap-5 m-3">
             <form className="form-inline input-group" onSubmit={handleSearch}>
               <div className="form-floating col-3">
@@ -123,7 +123,12 @@ function AppointmentsList() {
               </div>
               <div className="input-group-append">
                 &nbsp;&nbsp;
-                <button className="btn btn-success">Search</button>
+                <button
+                  style={{ backgroundColor: "#b2211f" }}
+                  className="btn text-light"
+                >
+                  Search
+                </button>
               </div>
             </form>
           </div>

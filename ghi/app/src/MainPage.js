@@ -1,12 +1,13 @@
 import UpcomingAppointments from "./UpcomingAppointments";
 import DealershipStats from "./DealershipStats";
 import FormLinks from "./FormLinks";
+import AvailableAutosList from "./AvailableAutos";
 import "./index.css";
 import { Link } from "react-router-dom";
 
 function MainPage() {
   return (
-    <div className="main-container">
+    <>
       <div className="top-container">
         <div className="title-container">
           <div>
@@ -21,20 +22,24 @@ function MainPage() {
             </div>
           </div>
         </div>
-        <div>
-          {" "}
-          <DealershipStats />
+        <div className="stats-appt-container">
+          <div className="stats-container">
+            <DealershipStats />
+          </div>
+          <div className="appts-container">
+            <UpcomingAppointments />
+          </div>
         </div>
       </div>
-      <div className="dashboard-container">
-        <div className="body-left-container">
+      <div className="bottom-container">
+        <div className="links-container">
           <FormLinks />
         </div>
-        <div className="body-right-container">
-          <UpcomingAppointments />
+        <div className="available-autos-container">
+          <AvailableAutosList />
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

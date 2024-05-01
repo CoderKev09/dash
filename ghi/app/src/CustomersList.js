@@ -20,38 +20,42 @@ function CustomersList() {
 
   return (
     <div className="row">
-      <div>
-        <h1 className="display-3">Customers</h1>
-      </div>
-      <div>
-        <Link to="new" className="btn btn_primary btn-sm">
-          <button type="button" className="btn btn-success btn-sm">
-            Add a Customer
-          </button>
-        </Link>
-      </div>
-      <table className="table table-dark table-hover shadow p-1 m-3">
-        <thead className="table-success">
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Address</th>
-          </tr>
-        </thead>
-        <tbody>
-          {customersList.customers?.map((customer) => {
-            return (
-              <tr key={customer.id}>
-                <td>{customer.first_name}</td>
-                <td>{customer.last_name}</td>
-                <td>{customer.phone_number}</td>
-                <td>{customer.address}</td>
+      <div className="offset-1 col-10">
+        <div className="shadow p-3 m-4">
+          <h1 className="m-3">Customers</h1>
+          <div className="row gap-5 m-3">
+            <Link
+              to="new"
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn btn-sm col-3 text-light"
+            >
+              Add a Customer
+            </Link>
+          </div>
+          <table className="table table-dark table-hover shadow">
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Phone Number</th>
+                <th>Address</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {customersList.customers?.map((customer) => {
+                return (
+                  <tr key={customer.id}>
+                    <td>{customer.first_name}</td>
+                    <td>{customer.last_name}</td>
+                    <td>{customer.phone_number}</td>
+                    <td>{customer.address}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

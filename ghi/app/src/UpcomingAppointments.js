@@ -38,44 +38,42 @@ function UpcomingAppointments() {
   }, []);
 
   return (
-    <div className="appointments-container">
+    <>
       <div className="appointments-table-title">
-        <h5 className="text-dark">Upcoming Appointments</h5>
-        <Link to="service/appointments" className="btn btn-success btn-sm ">
+        <h4 className="text-light">Upcoming Appointments</h4>
+        <Link to="service/appointments" className="btn btn-danger btn-sm ">
           View all
         </Link>
       </div>
-      <table className="table table-hover table-light">
-        <thead>
-          <tr>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Time</th>
-            <th>Technician</th>
-            <th>Reason</th>
-          </tr>
-        </thead>
-        <tbody>
-          {upcomingAppointments?.map((appointment) => {
-            return (
-              <tr
-                className="align-middle"
-                key={appointment.id}
-                value="appointment.id"
-              >
-                <td>{appointment.customer}</td>
-                <td>{getDate(appointment.date_time)}</td>
-                <td>{getTime(appointment.date_time)}</td>
-                <td>
-                  {`${appointment.technician.first_name} ${appointment.technician.last_name}`}
-                </td>
-                <td>{appointment.reason}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+      <div className="appt-details-container">
+        <table className="table table-hover table-light">
+          <thead>
+            <tr className="appointments-thead">
+              <th>Customer</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Technician</th>
+              <th>Reason</th>
+            </tr>
+          </thead>
+          <tbody>
+            {upcomingAppointments?.map((appointment) => {
+              return (
+                <tr key={appointment.id} value="appointment.id">
+                  <td>{appointment.customer}</td>
+                  <td>{getDate(appointment.date_time)}</td>
+                  <td>{getTime(appointment.date_time)}</td>
+                  <td>
+                    {`${appointment.technician.first_name} ${appointment.technician.last_name}`}
+                  </td>
+                  <td>{appointment.reason}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

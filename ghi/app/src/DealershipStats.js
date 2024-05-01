@@ -80,7 +80,7 @@ function DealershipStats() {
   return (
     <>
       <div className="stats-title text-light text-center">
-        <h1>Dealership Statistics</h1>
+        <h4>Dealership Statistics</h4>
       </div>
       <div className="stats-images">
         <div className="image-container">

@@ -49,7 +49,12 @@ function ManufacturerForm() {
                 Manufacturer name
               </label>
             </div>
-            <button className="btn btn-success">Create</button>
+            <button
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn text-light"
+            >
+              Create
+            </button>
           </form>
         </div>
       </div>

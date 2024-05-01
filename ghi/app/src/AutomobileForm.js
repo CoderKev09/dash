@@ -135,7 +135,12 @@ function AutomobileForm() {
               </select>
             </div>
             <div id="submitted"></div>
-            <button className="btn btn-success">Add Automobile</button>
+            <button
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn text-light"
+            >
+              Add Automobile
+            </button>
           </form>
         </div>
       </div>

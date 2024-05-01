@@ -20,32 +20,36 @@ function ManufacturerList() {
 
   return (
     <div className="row">
-      <div>
-        <h1 className="display-4">Manufacturers</h1>
-      </div>
-      <div>
-        <Link to="new">
-          <button type="button" className="btn btn-success btn-sm">
-            Add a new manufacturer
-          </button>
-        </Link>
-      </div>
-      <table className="table table-dark table-hover shadow p-1 m-3">
-        <thead className="table-success">
-          <tr>
-            <th>Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          {manufacturerList.manufacturers?.map((manufacturer) => {
-            return (
-              <tr key={manufacturer.id}>
-                <td>{manufacturer.name}</td>
+      <div className="offset-1 col-10">
+        <div className="shadow p-3 m-4">
+          <h1 className="m-3">Manufacturers</h1>
+          <div className="row gap-5 m-3">
+            <Link
+              to="new"
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn btn-sm col-3 text-light"
+            >
+              Add a new manufacturer
+            </Link>
+          </div>
+          <table className="table table-dark table-hover shadow">
+            <thead>
+              <tr>
+                <th>Name</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {manufacturerList.manufacturers?.map((manufacturer) => {
+                return (
+                  <tr key={manufacturer.id}>
+                    <td>{manufacturer.name}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

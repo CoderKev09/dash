@@ -90,9 +90,13 @@ function AppointmentsList() {
     <div className="row">
       <div className="col-12">
         <div className="shadow p-5 m-4">
-          <h1>Service Appointments</h1>
+          <h1 className="m-3">Service Appointments</h1>
           <div className="row gap-5 m-3">
-            <Link to="new" className="btn btn-success btn-sm col-3">
+            <Link
+              to="new"
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn btn-sm col-3 text-light"
+            >
               Add a new appointment
             </Link>
           </div>

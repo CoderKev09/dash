@@ -5,7 +5,7 @@ function Nav() {
     <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
         <NavLink className="navbar-brand" to="/">
-          Getaway Cars{" "}
+          Dash{" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"

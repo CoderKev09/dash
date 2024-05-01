@@ -20,38 +20,43 @@ function ModelsList() {
 
   return (
     <div className="row">
-      <div>
-        <h1 className="display-3">Models</h1>
-      </div>
-      <div>
-        <Link to="new">
-          <button type="button" className="btn btn-success btn-sm">
-            Add a new vehicle model
-          </button>
-        </Link>
-      </div>
-      <table className="table shadow p-1 m-3 table-dark table-hover">
-        <thead className="table-success">
-          <tr>
-            <th>Name</th>
-            <th>Manufacturer</th>
-            <th>Picture</th>
-          </tr>
-        </thead>
-        <tbody>
-          {modelList.models?.map((model) => {
-            return (
-              <tr key={model.id}>
-                <td>{model.name}</td>
-                <td>{model.manufacturer.name}</td>
-                <td>
-                  <img className="carpic" src={model.picture_url} alt=''/>
-                </td>
+      <div className="col-12">
+        <div className="shadow p-3 m-4">
+          <h1>Models</h1>
+          <div>
+            <Link
+              to="new"
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn btn-sm text-light"
+            >
+              Add a new vehicle model
+            </Link>
+          </div>
+          <br />
+          <table className="table table-hover text-center table-dark">
+            <thead>
+              <tr>
+                <th style={{ width: "600px" }}>Picture</th>
+                <th>Name</th>
+                <th>Manufacturer</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </table>
+            </thead>
+            <tbody>
+              {modelList.models?.map((model) => {
+                return (
+                  <tr className="align-middle" key={model.id}>
+                    <td>
+                      <img className="carpic" src={model.picture_url} alt="" />
+                    </td>
+                    <td>{model.name}</td>
+                    <td>{model.manufacturer.name}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }

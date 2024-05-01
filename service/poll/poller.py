@@ -16,7 +16,7 @@ def poll(repeat=True):
     while True:
         print("Service poller polling for data")
         try:
-            url = "http://getaway-cars-inventory-api-1:8000/api/automobiles/"
+            url = "http://dash-inventory-api-1:8000/api/automobiles/"
             response = requests.get(url)
             content = json.loads(response.content)
             for auto in content["autos"]:

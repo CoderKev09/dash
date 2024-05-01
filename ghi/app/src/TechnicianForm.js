@@ -98,7 +98,12 @@ function TechnicianForm() {
               </label>
             </div>
             <div id="submitted"></div>
-            <button className="btn btn-success">Add Technician</button>
+            <button
+              style={{ backgroundColor: "#b2211f" }}
+              className="btn text-light"
+            >
+              Add Technician
+            </button>
           </form>
         </div>
       </div>
